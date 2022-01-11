@@ -1,0 +1,64 @@
+from scipy import signal
+import numpy as np
+import matplotlib.pyplot as plt
+#askisi 1 ervthma a
+am=(input("Arithmos Mhtrwou :"))
+personal_parameter=int(am[-1]) + int(am[-2]) +int(am[-3]) # the sum of three oned-digit numbers can only be a two-digit number or one-digit
+if(personal_parameter>9):
+    personal_parameter=(personal_parameter//10) + (personal_parameter %10)
+    print( personal_parameter)
+f_m= personal_parameter * 1000 #syxnothta gia el19165
+tmin=0
+tmax=4/f_m
+t=np.linspace(tmin,tmax,200)
+triangle=4*signal.sawtooth(2 * np.pi * f_m * t, 0.5)
+plt.plot(t,triangle)
+plt.show()
+
+f_s1 = 30 * f_m
+Ts1=1/f_s1
+nmax= tmax *f_s1
+nmin= tmin * f_s1
+n1=np.arange(nmin,nmax)
+n_Ts1= n1 * Ts1
+x1 = 4 * signal.sawtooth(2 * np.pi * n_Ts1 * f_m , 0.5)
+plt.figure(1)
+plt.stem(n_Ts1,x1)
+plt.show()
+
+f_s2= 50 * f_m
+Ts2=1/f_s2
+nmax=tmax * f_s2
+nmin=tmin * f_s2
+n2=np.arange(nmin,nmax)
+n_Ts2=n2 * Ts2
+x2=4 * signal.sawtooth(2 * np.pi * f_m * n_Ts2, 0.5)
+plt.figure(2)
+plt.stem(n_Ts2,x2)
+plt.show()
+
+#askisi 1 ervthma b
+f_s3= 4 * f_m
+Ts3=1/f_s3
+nmax= tmax * f_s3
+nmin= tmin * f_s3
+n3=np.arange(nmin,nmax)
+n_Ts3=n3 * Ts3
+x3= 4* signal.sawtooth(2 * np.pi * f_m * n_Ts3, 0.5)
+plt.figure(3)
+plt.stem(n_Ts3,x3)
+plt.show()
+
+#askisi 1 ervthma c
+tmin=0
+tmax= 4/f_m
+t=np.linspace(tmin,tmax,200)
+z_t=np.sin(2 * np.pi * f_m * t)
+plt.figure(4)
+plt.plot(t,z_t)
+plt.show()
+#deigmatolipsia gia f_s1=30 * f_m
+f_s1= 30 * f_m
+Ts1= 1/f_m
+nmax=tmax * f_s1
+nmin= tmin * f_s1
